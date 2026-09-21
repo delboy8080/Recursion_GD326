@@ -10,7 +10,7 @@ void question4();
 
 int main()
 {
-	question2();
+	question3();
 }
 bool isPalindrome(string &s, int n = 0)
 {
@@ -36,7 +36,22 @@ void question1()
 
 void findMinMax(int* arr, int size, int& min, int& max, int n = 0)
 {
-
+	if (n == size)
+	{
+		return;
+	}
+	else
+	{
+		if (arr[n] < min|| n == 0)
+		{
+			min = arr[n];
+		}
+		if (arr[n] > max || n == 0)
+		{
+			max = arr[n];
+		}
+		findMinMax(arr, size, min, max, n + 1);
+	}
 }
 
 void print(int* arr, int size)
@@ -48,10 +63,12 @@ void print(int* arr, int size)
 		cout << *arr;
 		arr++;
 	}
+	cout << endl;
 }
 
 void question2()
 {
+	srand(time(NULL));
 	const int size = 10;
 	int arr[size];
 	for (int i = 0; i < size; i++)
@@ -59,4 +76,21 @@ void question2()
 		arr[i] = 1 + rand() % 20;
 	}
 	print(arr, size);
+	int min=0, max=0;
+	findMinMax(arr, size, min, max);
+	cout << "Min: " << min << " & Max: " << max << endl;
+} 
+
+string reverse(string& s, int n = 0)
+{
+	if (n == s.size())
+		return "";
+	else
+		return reverse(s, n + 1) + s[n];
+}
+
+void question3()
+{
+	string word = "pots&pans";
+	cout << word << " in reverse is " << reverse(word) << endl;
 }
