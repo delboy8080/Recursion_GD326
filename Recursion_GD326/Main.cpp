@@ -6,11 +6,11 @@ void question1();
 void question2();
 void question3();
 void question4();
-
+void question5();
 
 int main()
 {
-	question3();
+	question5();
 }
 bool isPalindrome(string &s, int n = 0)
 {
@@ -93,4 +93,32 @@ void question3()
 {
 	string word = "pots&pans";
 	cout << word << " in reverse is " << reverse(word) << endl;
+}
+int stringToInteger(string& num, int n=0)
+{
+	if (n == num.size())
+		return 0;
+	return 10*stringToInteger(num, n+1) + num[num.length() - 1 - n] - '0';
+}
+void question4()
+{
+	string numericString;
+	cout << "Please enter a number: ";
+	cin >> numericString;
+	cout << "As Integer: " << stringToInteger(numericString);
+}
+
+int power(int x)
+{
+	if (x == 0)
+		return 1;
+	return 2 * power(x - 1);
+}
+
+void question5()
+{
+	for (int i = 1; i <= 10;i++)
+	{
+		cout << "2^" << i << "  = " << power(i) << endl;
+	}
 }
